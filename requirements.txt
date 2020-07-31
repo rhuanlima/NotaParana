@@ -1,0 +1,5 @@
+html5lib==1.1
+pandas==1.1.0
+python-dotenv==0.14.0
+selenium==3.141.0
+beautifulsoup4==4.9.1
