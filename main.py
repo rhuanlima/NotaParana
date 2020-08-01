@@ -1,12 +1,22 @@
 import pdfkit
+import pandas as pd
+import html5lib
+import bs4
+import sys
 from selenium import webdriver
 from dotenv import load_dotenv
 from os import getenv
 from time import sleep
-import pandas as pd
-import html5lib
-import bs4
 from datetime import datetime
+
+if len(sys.argv) == 1:
+    nr_meses = 2
+else:
+    try:
+        nr_meses = int(sys.argv[1]) + 1
+    except:
+        raise Exception('Parameter entered is not an integer')
+
 
 
 def get_value(element):
@@ -27,7 +37,6 @@ def get_value(element):
 
 load_dotenv()
 
-get_value()
 driver = webdriver.Chrome('./chromedriver')
 
 url = 'https://notaparana.pr.gov.br/'
@@ -52,7 +61,7 @@ window_before = driver.window_handles[0]
 df = pd.DataFrame(columns=['nf_nr', 'dt_emissao',
                            'place_name', 'vl_nf', 'acess_key', 'qr_code_link'])
 
-for paginas in range(1, 13):
+for paginas in range(1, nr_meses):
     nr_linhas = pd.read_html(driver.find_element_by_xpath(
         '/html/body/div[2]/div[2]/div/div[4]/form/fieldset/div[4]/table').get_attribute('outerHTML'))[0].shape[0]
     for nr_row in range(2, nr_linhas):

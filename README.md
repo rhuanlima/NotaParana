@@ -15,12 +15,17 @@ Script python desenvolvido para consulta e exportação dos ultimos 13 meses de 
 - Instalar o pdfkit:
     https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf
 
-- Executar o script:
+- Executar o script informando quantos meses deseja baixar:
+    ```
+    python main.py 12
+    ```
+    
+    Para baixar apenas o mes atual basta chamar o script sem nenhum parametro:
+
     ```
     python main.py
     ```
-
-
+    
 ## Results
 
 Após a execução é criado o csv ``` data_nf.csv ``` com a lista de notas com os valores:
