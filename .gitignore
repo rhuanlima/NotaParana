@@ -156,3 +156,4 @@ dmypy.json
 
 data_nf.csv
 chromedriver
+nf_pdf/*
